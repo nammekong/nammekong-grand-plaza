@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* =========================================================
+   NAM MEKONG GRAND PLAZA
+   GLOBAL DESIGN SYSTEM
+========================================================= */
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --navy: #08111f;
+  --navy-light: #0f172a;
+
+  --gold: #f5c542;
+  --gold-dark: #c89a2b;
+
+  --white: #ffffff;
+  --muted: #64748b;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  /*
+    Dùng font hệ thống ổn định trước.
+    Không phụ thuộc vào biến font chưa được khai báo
+    trong layout.tsx.
+  */
+  font-family:
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family:
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-weight: 700;
+
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+button {
+  margin: 0;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+img {
+  max-width: 100%;
+}
+
+/*
+  Tránh ảnh inline tạo khoảng trắng nhỏ phía dưới
+*/
+img,
+svg {
+  vertical-align: middle;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* =========================================================
+   AOS SAFETY
+========================================================= */
+
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* =========================================================
+   SMOOTH SECTION OFFSET
+========================================================= */
+
+section {
+  scroll-margin-top: 90px;
+}
+
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW
+========================================================= */
+
+html,
+body {
+  max-width: 100%;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+
+  section {
+    scroll-margin-top: 75px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}/* =========================================================
+   LINK / BUTTON COLOR SAFETY
+========================================================= */
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a.text-white,
+a .text-white {
+  color: #ffffff;
+}
+
+a.text-\[\#0F172A\],
+a .text-\[\#0F172A\] {
+  color: #0F172A;
+}
