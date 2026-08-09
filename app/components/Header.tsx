@@ -15,18 +15,16 @@ const menu = [
   { name: "Liên hệ", link: "#contact" },
 ];
 
-const HEADER_OFFSET = 85;
+const HEADER_OFFSET = 90;
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
 
-  /*
-   * =========================================================
-   * SCROLL
-   * =========================================================
-   */
+  /* =========================================================
+     SCROLL
+  ========================================================= */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,10 +36,6 @@ export default function Header() {
         document.querySelectorAll<HTMLElement>("section[id]")
       );
 
-      /*
-       * Xác định section hiện tại dựa trên vị trí
-       * tương đối với header.
-       */
       let currentSection = "#home";
 
       for (const section of sections) {
@@ -56,10 +50,7 @@ export default function Header() {
         }
       }
 
-      /*
-       * Khi ở gần cuối trang,
-       * ưu tiên section cuối cùng.
-       */
+      /* Khi gần cuối trang */
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 100
@@ -88,11 +79,9 @@ export default function Header() {
     };
   }, []);
 
-  /*
-   * =========================================================
-   * MOBILE SCROLL LOCK
-   * =========================================================
-   */
+  /* =========================================================
+     MOBILE SCROLL LOCK
+  ========================================================= */
 
   useEffect(() => {
     if (!open) {
@@ -107,11 +96,9 @@ export default function Header() {
     };
   }, [open]);
 
-  /*
-   * =========================================================
-   * MENU CLICK
-   * =========================================================
-   */
+  /* =========================================================
+     MENU CLICK
+  ========================================================= */
 
   const handleMenuClick = (link: string) => {
     setOpen(false);
@@ -138,18 +125,16 @@ export default function Header() {
     }, 50);
   };
 
-  /*
-   * =========================================================
-   * RENDER
-   * =========================================================
-   */
+  /* =========================================================
+     RENDER
+  ========================================================= */
 
   return (
     <header
       className={`fixed left-0 top-0 z-[100] w-full transition-all duration-300 ${
         scrolled || open
           ? "border-b border-white/10 bg-[#0B1023]/95 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl"
-          : "bg-[#0B1023]/75 backdrop-blur-md"
+          : "bg-[#0B1023]/90 backdrop-blur-md"
       }`}
     >
       {/* =====================================================
@@ -157,10 +142,10 @@ export default function Header() {
       ===================================================== */}
 
       <div
-        className={`mx-auto flex max-w-[1440px] items-center justify-between px-4 transition-all duration-300 sm:px-6 md:px-8 lg:px-10 ${
+        className={`mx-auto flex max-w-[1440px] items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 ${
           scrolled
-            ? "h-[68px] md:h-[78px]"
-            : "h-[74px] md:h-[90px]"
+            ? "h-[68px] md:h-[76px]"
+            : "h-[72px] md:h-[82px]"
         }`}
       >
         {/* ===================================================
@@ -171,7 +156,7 @@ export default function Header() {
           type="button"
           onClick={() => handleMenuClick("#home")}
           aria-label="Trang chủ"
-          className="shrink-0"
+          className="flex h-full shrink-0 items-center overflow-hidden"
         >
           <Image
             src="/images/logo-white.png"
@@ -179,10 +164,11 @@ export default function Header() {
             width={320}
             height={120}
             priority
-            className={`h-auto w-auto object-contain transition-all duration-300 ${
+            sizes="(max-width: 768px) 145px, 190px"
+            className={`block w-auto object-contain transition-all duration-300 ${
               scrolled
-                ? "max-w-[135px] sm:max-w-[150px] md:max-w-[175px]"
-                : "max-w-[145px] sm:max-w-[165px] md:max-w-[210px]"
+                ? "h-[48px] sm:h-[52px] md:h-[56px]"
+                : "h-[54px] sm:h-[58px] md:h-[62px]"
             }`}
           />
         </button>
@@ -193,7 +179,7 @@ export default function Header() {
 
         <nav
           aria-label="Điều hướng chính"
-          className="hidden items-center gap-5 lg:flex xl:gap-7"
+          className="hidden items-center gap-4 lg:flex xl:gap-6"
         >
           {menu.map((item) => {
             const isActive = activeSection === item.link;
@@ -204,7 +190,7 @@ export default function Header() {
                 type="button"
                 onClick={() => handleMenuClick(item.link)}
                 aria-current={isActive ? "page" : undefined}
-                className={`group relative whitespace-nowrap py-2 text-[14px] font-semibold transition-all duration-300 xl:text-[15px] ${
+                className={`group relative whitespace-nowrap py-2 text-[13px] font-semibold transition-all duration-300 xl:text-[14px] ${
                   isActive
                     ? "text-yellow-400"
                     : "text-white/90 hover:text-yellow-400"
