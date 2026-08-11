@@ -163,8 +163,11 @@ export default function About() {
                   >
                     {/* Icon */}
 
-                    <div className="flex h-13 w-13 h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#F5C542]/10 text-[#F5C542] transition duration-300 group-hover:bg-[#F5C542] group-hover:text-[#0F172A]">
-                      <Icon size={24} strokeWidth={2} />
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#F5C542]/10 text-[#F5C542] transition duration-300 group-hover:bg-[#F5C542] group-hover:text-[#0F172A]">
+                      <Icon
+                        size={24}
+                        strokeWidth={2}
+                      />
                     </div>
 
                     {/* Text */}

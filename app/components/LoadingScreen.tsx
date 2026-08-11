@@ -14,52 +14,42 @@ export default function LoadingScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!loading) return null;
+  if (!loading) {
+    return null;
+  }
 
   return (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#08111F]">
-
-      <div className="flex flex-col items-center">
-
+    <div className="pointer-events-auto fixed inset-0 z-[999999] flex items-center justify-center bg-[#08111F]">
+      <div className="flex flex-col items-center px-6 text-center">
         {/* Logo */}
-
         <Image
           src="/images/logo-white.png"
           alt="Nam Mekong Grand Plaza"
           width={220}
           height={90}
           priority
-          className="animate-pulse"
+          className="h-auto w-[180px] animate-pulse sm:w-[220px]"
         />
 
         {/* Text */}
-
-        <h2 className="mt-8 text-3xl font-bold text-white">
+        <h2 className="mt-8 text-2xl font-bold text-white sm:text-3xl">
           NAM MEKONG GRAND PLAZA
         </h2>
 
-        <p className="mt-3 tracking-[6px] text-yellow-400">
+        <p className="mt-3 text-sm tracking-[5px] text-yellow-400">
           Bình Dương
         </p>
 
-        {/* ===== PHẦN 2 ===== */}        {/* Loading Bar */}
-
-        <div className="mt-10 h-[6px] w-72 overflow-hidden rounded-full bg-white/10">
-
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300 animate-[loading_2s_linear_forwards]"
-          />
-
+        {/* Loading Bar */}
+        <div className="mt-10 h-[6px] w-64 overflow-hidden rounded-full bg-white/10 sm:w-72">
+          <div className="h-full w-full origin-left animate-[loading_2s_linear_forwards] rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300" />
         </div>
 
         {/* Loading Text */}
-
-        <p className="mt-6 text-sm uppercase tracking-[8px] text-slate-400">
+        <p className="mt-6 text-xs uppercase tracking-[6px] text-slate-400">
           Loading...
         </p>
-
       </div>
-
-      {/* ===== PHẦN 3 ===== */}    </div>
+    </div>
   );
 }

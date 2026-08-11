@@ -15,7 +15,7 @@ const menu = [
   { name: "Liên hệ", link: "#contact" },
 ];
 
-const HEADER_OFFSET = 90;
+const HEADER_OFFSET = 80;
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +23,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("#home");
 
   /* =========================================================
-     SCROLL
+     THEO DÕI SCROLL
   ========================================================= */
 
   useEffect(() => {
@@ -42,15 +42,15 @@ export default function Header() {
         const rect = section.getBoundingClientRect();
 
         if (
-          rect.top <= HEADER_OFFSET + 30 &&
-          rect.bottom > HEADER_OFFSET + 30
+          rect.top <= HEADER_OFFSET + 40 &&
+          rect.bottom > HEADER_OFFSET + 40
         ) {
           currentSection = `#${section.id}`;
           break;
         }
       }
 
-      /* Khi gần cuối trang */
+      // Khi gần cuối trang
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 100
@@ -80,16 +80,15 @@ export default function Header() {
   }, []);
 
   /* =========================================================
-     MOBILE SCROLL LOCK
+     KHÓA SCROLL KHI MENU MOBILE MỞ
   ========================================================= */
 
   useEffect(() => {
-    if (!open) {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
       document.body.style.overflow = "";
-      return;
     }
-
-    document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = "";
@@ -97,32 +96,31 @@ export default function Header() {
   }, [open]);
 
   /* =========================================================
-     MENU CLICK
+     CLICK MENU
   ========================================================= */
 
   const handleMenuClick = (link: string) => {
+    // Đóng menu trước
     setOpen(false);
 
-    const target = document.querySelector<HTMLElement>(link);
-
-    if (!target) {
-      return;
-    }
-
-    const elementPosition =
-      target.getBoundingClientRect().top + window.scrollY;
-
-    const targetPosition = Math.max(
-      0,
-      elementPosition - HEADER_OFFSET
-    );
-
+    // Chờ menu đóng rồi mới scroll
     window.setTimeout(() => {
+      const target = document.querySelector<HTMLElement>(link);
+
+      if (!target) {
+        return;
+      }
+
+      const targetTop =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        HEADER_OFFSET;
+
       window.scrollTo({
-        top: targetPosition,
+        top: Math.max(0, targetTop),
         behavior: "smooth",
       });
-    }, 50);
+    }, 100);
   };
 
   /* =========================================================
@@ -130,200 +128,202 @@ export default function Header() {
   ========================================================= */
 
   return (
-    <header
-      className={`fixed left-0 top-0 z-[100] w-full transition-all duration-300 ${
-        scrolled || open
-          ? "border-b border-white/10 bg-[#0B1023]/95 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl"
-          : "bg-[#0B1023]/90 backdrop-blur-md"
-      }`}
-    >
-      {/* =====================================================
-          HEADER BAR
-      ===================================================== */}
-
-      <div
-        className={`mx-auto flex max-w-[1440px] items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 ${
-          scrolled
-            ? "h-[68px] md:h-[76px]"
-            : "h-[72px] md:h-[82px]"
+    <>
+      <header
+        className={`fixed left-0 top-0 z-[9999] w-full transition-all duration-300 ${
+          scrolled || open
+            ? "border-b border-white/10 bg-[#0B1023]/98 shadow-[0_8px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl"
+            : "bg-[#0B1023]/95 backdrop-blur-md"
         }`}
       >
         {/* ===================================================
-            LOGO
+            HEADER BAR
         =================================================== */}
 
-        <button
-          type="button"
-          onClick={() => handleMenuClick("#home")}
-          aria-label="Trang chủ"
-          className="flex h-full shrink-0 items-center overflow-hidden"
+        <div
+          className={`mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 ${
+            scrolled
+              ? "h-[68px] md:h-[76px]"
+              : "h-[72px] md:h-[82px]"
+          }`}
         >
-          <Image
-            src="/images/logo-white.png"
-            alt="Nam Mekong Grand Plaza"
-            width={320}
-            height={120}
-            priority
-            sizes="(max-width: 768px) 145px, 190px"
-            className={`block w-auto object-contain transition-all duration-300 ${
-              scrolled
-                ? "h-[48px] sm:h-[52px] md:h-[56px]"
-                : "h-[54px] sm:h-[58px] md:h-[62px]"
-            }`}
-          />
-        </button>
+          {/* =================================================
+              LOGO
+          ================================================= */}
 
-        {/* ===================================================
-            DESKTOP MENU
-        =================================================== */}
+          <button
+            type="button"
+            onClick={() => handleMenuClick("#home")}
+            aria-label="Trang chủ"
+            className="relative z-[10001] flex h-full shrink-0 items-center"
+          >
+            <Image
+              src="/images/logo-white.png"
+              alt="Nam Mekong Grand Plaza"
+              width={320}
+              height={120}
+              priority
+              sizes="(max-width: 768px) 145px, 190px"
+              className={`block w-auto object-contain transition-all duration-300 ${
+                scrolled
+                  ? "h-[48px] sm:h-[52px] md:h-[56px]"
+                  : "h-[54px] sm:h-[58px] md:h-[62px]"
+              }`}
+            />
+          </button>
 
-        <nav
-          aria-label="Điều hướng chính"
-          className="hidden items-center gap-4 lg:flex xl:gap-6"
-        >
-          {menu.map((item) => {
-            const isActive = activeSection === item.link;
+          {/* =================================================
+              DESKTOP MENU
+          ================================================= */}
 
-            return (
-              <button
-                key={item.link}
-                type="button"
-                onClick={() => handleMenuClick(item.link)}
-                aria-current={isActive ? "page" : undefined}
-                className={`group relative whitespace-nowrap py-2 text-[13px] font-semibold transition-all duration-300 xl:text-[14px] ${
-                  isActive
-                    ? "text-yellow-400"
-                    : "text-white/90 hover:text-yellow-400"
-                }`}
-              >
-                {item.name}
+          <nav
+            aria-label="Điều hướng chính"
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
+          >
+            {menu.map((item) => {
+              const isActive = activeSection === item.link;
 
-                <span
-                  className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-yellow-400 transition-all duration-300 ${
+              return (
+                <button
+                  key={item.link}
+                  type="button"
+                  onClick={() => handleMenuClick(item.link)}
+                  className={`group relative whitespace-nowrap py-2 text-[13px] font-semibold transition-all duration-300 xl:text-[14px] ${
                     isActive
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
+                      ? "text-yellow-400"
+                      : "text-white/90 hover:text-yellow-400"
                   }`}
-                />
-              </button>
-            );
-          })}
-        </nav>
+                >
+                  {item.name}
+
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-yellow-400 transition-all duration-300 ${
+                      isActive
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* =================================================
+              DESKTOP HOTLINE
+          ================================================= */}
+
+          <a
+            href="tel:0767615368"
+            aria-label="Gọi hotline 07676 15 368"
+            className="hidden h-11 items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 px-5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-yellow-400/30 lg:flex xl:h-12 xl:px-6"
+          >
+            <Phone
+              size={17}
+              strokeWidth={2.5}
+            />
+
+            <span className="whitespace-nowrap text-sm xl:text-[15px]">
+              07676 15 368
+            </span>
+          </a>
+
+          {/* =================================================
+              MOBILE HAMBURGER
+          ================================================= */}
+
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            aria-label={open ? "Đóng menu" : "Mở menu"}
+            aria-expanded={open}
+            className="relative z-[10001] flex h-11 w-11 shrink-0 touch-manipulation items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white shadow-lg active:scale-95 lg:hidden"
+          >
+            {open ? (
+              <X
+                size={27}
+                strokeWidth={2.2}
+              />
+            ) : (
+              <Menu
+                size={27}
+                strokeWidth={2.2}
+              />
+            )}
+          </button>
+        </div>
 
         {/* ===================================================
-            DESKTOP HOTLINE
+            MOBILE MENU
         =================================================== */}
 
-        <a
-          href="tel:0767615368"
-          aria-label="Gọi hotline 07676 15 368"
-          className="hidden h-11 items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 px-5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-yellow-400/30 lg:flex xl:h-12 xl:px-6"
+        <div
+          className={`absolute left-0 top-full w-full border-t border-white/10 bg-[#0B1023]/98 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
+            open
+              ? "visible translate-y-0 opacity-100"
+              : "invisible -translate-y-3 opacity-0"
+          }`}
         >
-          <Phone
-            size={17}
-            strokeWidth={2.5}
-          />
+          <nav
+            aria-label="Điều hướng mobile"
+            className="mx-auto max-h-[calc(100vh-80px)] w-full max-w-xl overflow-y-auto px-4 py-4 sm:px-6"
+          >
+            {menu.map((item) => {
+              const isActive = activeSection === item.link;
 
-          <span className="whitespace-nowrap text-sm xl:text-[15px]">
-            07676 15 368
-          </span>
-        </a>
+              return (
+                <button
+                  key={item.link}
+                  type="button"
+                  onClick={() => handleMenuClick(item.link)}
+                  className={`mb-1 flex min-h-[52px] w-full touch-manipulation items-center justify-between rounded-xl px-4 py-3 text-left transition-all duration-200 active:scale-[0.98] ${
+                    isActive
+                      ? "bg-yellow-400/10 text-yellow-400"
+                      : "text-white hover:bg-white/5 hover:text-yellow-400"
+                  }`}
+                >
+                  <span className="text-[15px] font-medium">
+                    {item.name}
+                  </span>
 
-        {/* ===================================================
-            MOBILE MENU BUTTON
-        =================================================== */}
+                  {isActive && (
+                    <span className="h-2 w-2 rounded-full bg-yellow-400" />
+                  )}
+                </button>
+              );
+            })}
 
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={open ? "Đóng menu" : "Mở menu"}
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-all duration-300 hover:border-yellow-400/40 hover:bg-yellow-400/10 hover:text-yellow-400 active:scale-95 lg:hidden"
-        >
-          {open ? (
-            <X
-              size={26}
-              strokeWidth={2}
-            />
-          ) : (
-            <Menu
-              size={26}
-              strokeWidth={2}
-            />
-          )}
-        </button>
-      </div>
+            {/* =================================================
+                MOBILE HOTLINE
+            ================================================= */}
+
+            <a
+              href="tel:0767615368"
+              className="mt-3 flex h-12 w-full touch-manipulation items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 font-bold text-slate-900 shadow-lg active:scale-[0.98]"
+            >
+              <Phone
+                size={18}
+                strokeWidth={2.5}
+              />
+
+              <span>07676 15 368</span>
+            </a>
+          </nav>
+        </div>
+      </header>
 
       {/* =====================================================
-          MOBILE MENU
+          MOBILE BACKDROP
+          Bấm ra ngoài để đóng menu
       ===================================================== */}
 
-      <div
-        id="mobile-navigation"
-        className={`grid overflow-hidden transition-all duration-300 lg:hidden ${
-          open
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="min-h-0 overflow-hidden">
-          <div className="border-t border-white/10 bg-[#0B1023]/98 shadow-2xl backdrop-blur-xl">
-            <nav
-              aria-label="Điều hướng mobile"
-              className="mx-auto flex max-w-xl flex-col px-4 py-3 sm:px-6"
-            >
-              {menu.map((item) => {
-                const isActive =
-                  activeSection === item.link;
-
-                return (
-                  <button
-                    key={item.link}
-                    type="button"
-                    onClick={() =>
-                      handleMenuClick(item.link)
-                    }
-                    aria-current={
-                      isActive ? "page" : undefined
-                    }
-                    className={`flex min-h-[50px] items-center justify-between rounded-xl px-4 py-3 text-left transition-all duration-200 active:scale-[0.98] ${
-                      isActive
-                        ? "bg-yellow-400/10 text-yellow-400"
-                        : "text-white hover:bg-white/5 hover:text-yellow-400"
-                    }`}
-                  >
-                    <span className="text-[15px] font-medium">
-                      {item.name}
-                    </span>
-
-                    {isActive && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
-                    )}
-                  </button>
-                );
-              })}
-
-              {/* =================================================
-                  MOBILE HOTLINE
-              ================================================= */}
-
-              <a
-                href="tel:0767615368"
-                aria-label="Gọi hotline 07676 15 368"
-                className="mt-3 flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 font-bold text-slate-900 shadow-lg transition-transform duration-200 active:scale-[0.98]"
-              >
-                <Phone
-                  size={18}
-                  strokeWidth={2.5}
-                />
-
-                <span>07676 15 368</span>
-              </a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+      {open && (
+        <button
+          type="button"
+          aria-label="Đóng menu"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-[9990] bg-black/40 lg:hidden"
+        />
+      )}
+    </>
   );
 }
