@@ -4,6 +4,7 @@ import About from "./components/About";
 import Location from "./components/Location";
 import Amenities from "./components/Amenities";
 import Gallery from "./components/Gallery";
+import Video from "./components/Video";
 import MasterPlan from "./components/MasterPlan";
 import UnitPlan from "./components/UnitPlan";
 import Contact from "./components/Contact";
@@ -32,6 +33,9 @@ export default function Home() {
 
         {/* ================= GALLERY ================= */}
         <Gallery />
+
+        {/* ================= PROJECT VIDEO ================= */}
+        <Video />
 
         {/* ================= MASTER PLAN ================= */}
         <MasterPlan />

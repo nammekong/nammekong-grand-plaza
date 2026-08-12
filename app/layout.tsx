@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import "./globals.css";
 export const metadata: Metadata = {
   title: "Nam Mekong Grand Plaza Bình Dương | Căn hộ cao cấp",
 

@@ -11,13 +11,6 @@ import {
   X,
 } from "lucide-react";
 
-/* =========================================================
-   UNIT PLAN DATA
-
-   GIỮ NGUYÊN TÊN FILE ẢNH HIỆN TẠI
-   Chỉ thay đổi dữ liệu hiển thị bằng code.
-========================================================= */
-
 const unitPlans = [
   {
     id: 1,
@@ -77,30 +70,17 @@ export default function UnitPlan() {
 
   const current = unitPlans[active];
 
-  /* =========================================================
-     NEXT
-  ========================================================= */
-
   const nextImage = () => {
     setActive((prev) =>
       prev === unitPlans.length - 1 ? 0 : prev + 1
     );
   };
 
-  /* =========================================================
-     PREVIOUS
-  ========================================================= */
-
   const prevImage = () => {
     setActive((prev) =>
       prev === 0 ? unitPlans.length - 1 : prev - 1
     );
   };
-
-  /* =========================================================
-     LIGHTBOX
-     KHÓA SCROLL + KEYBOARD
-  ========================================================= */
 
   useEffect(() => {
     if (!open) return;
@@ -133,31 +113,19 @@ export default function UnitPlan() {
 
   return (
     <>
-      {/* =====================================================
-          UNIT PLAN SECTION
-      ===================================================== */}
-
       <section
         id="unitplan"
         className="relative overflow-hidden bg-white py-24 lg:py-32"
       >
-        {/* =================================================
-            BACKGROUND
-        ================================================= */}
+        {/* Background */}
 
         <div className="pointer-events-none absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-yellow-400/10 blur-[180px]" />
 
         <div className="pointer-events-none absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-blue-500/5 blur-[220px]" />
 
-        {/* =================================================
-            CONTAINER
-        ================================================= */}
-
         <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-          {/* =================================================
-              HEADING
-          ================================================= */}
+          {/* Heading */}
 
           <div
             className="mx-auto max-w-3xl text-center"
@@ -178,9 +146,7 @@ export default function UnitPlan() {
             </p>
           </div>
 
-          {/* =================================================
-              TABS
-          ================================================= */}
+          {/* Tabs */}
 
           <div
             className="mt-14 flex flex-wrap justify-center gap-3 sm:gap-4"
@@ -210,23 +176,14 @@ export default function UnitPlan() {
             ))}
           </div>
 
-          {/* =================================================
-              MAIN CONTENT
-          ================================================= */}
+          {/* Main content */}
 
           <div className="mt-16 grid items-start gap-12 lg:mt-20 lg:grid-cols-2 lg:gap-16">
 
-            {/* =================================================
-                LEFT - IMAGE
-            ================================================= */}
+            {/* Image */}
 
-            <div
-              data-aos="fade-right"
-              className="min-w-0"
-            >
+            <div data-aos="fade-right" className="min-w-0">
               <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white p-3 shadow-[0_25px_70px_rgba(15,23,42,0.10)] sm:p-4">
-
-                {/* Image */}
 
                 <button
                   type="button"
@@ -243,8 +200,6 @@ export default function UnitPlan() {
                     className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                   />
 
-                  {/* Image overlay */}
-
                   <div className="absolute inset-0 flex items-end justify-end bg-gradient-to-t from-[#08111F]/30 via-transparent to-transparent p-5 opacity-0 transition duration-300 group-hover:opacity-100">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0F172A] shadow-xl">
                       <Maximize2 size={17} />
@@ -253,11 +208,9 @@ export default function UnitPlan() {
                   </div>
                 </button>
 
-                {/* =================================================
-                    IMAGE NAVIGATION
-                ================================================= */}
+                {/* Navigation */}
 
-                <div className="absolute left-7 top-1/2 flex w-[calc(100%-56px)] -translate-y-1/2 justify-between pointer-events-none">
+                <div className="pointer-events-none absolute left-7 top-1/2 flex w-[calc(100%-56px)] -translate-y-1/2 justify-between">
 
                   <button
                     type="button"
@@ -280,9 +233,7 @@ export default function UnitPlan() {
                 </div>
               </div>
 
-              {/* =================================================
-                  THUMBNAILS
-              ================================================= */}
+              {/* Thumbnails */}
 
               <div className="mt-5 grid grid-cols-5 gap-2 sm:gap-3">
                 {unitPlans.map((item, index) => (
@@ -309,28 +260,19 @@ export default function UnitPlan() {
               </div>
             </div>
 
-            {/* =================================================
-                RIGHT - INFORMATION
-            ================================================= */}
+            {/* Information */}
 
-            <div
-              data-aos="fade-left"
-              className="lg:pt-4"
-            >
-
-              {/* Category */}
+            <div data-aos="fade-left" className="lg:pt-4">
 
               <span className="inline-flex rounded-full bg-yellow-50 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#C89A2B]">
                 {current.category}
               </span>
 
-              {/* Title */}
-
               <h3 className="mt-6 text-4xl font-black leading-tight text-[#0F172A] sm:text-5xl">
                 {current.name}
               </h3>
 
-              {/* AREA - PHẦN MỚI */}
+              {/* Area */}
 
               <div className="mt-7 inline-flex items-center gap-4 rounded-2xl border border-yellow-200 bg-yellow-50 px-6 py-4">
                 <div>
@@ -344,27 +286,18 @@ export default function UnitPlan() {
                 </div>
               </div>
 
-              {/* Description */}
-
               <p className="mt-7 text-lg leading-8 text-slate-600">
                 {current.description}
               </p>
 
-              {/* =================================================
-                  INFO CARDS
-              ================================================= */}
+              {/* Cards */}
 
               <div className="mt-10 space-y-4">
 
-                {/* Card 01 */}
-
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F5C542] hover:shadow-xl">
                   <div className="flex items-start gap-4">
-
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F5C542]/10 text-[#C89A2B]">
-                      <span className="text-sm font-black">
-                        01
-                      </span>
+                      <span className="text-sm font-black">01</span>
                     </div>
 
                     <div>
@@ -381,19 +314,13 @@ export default function UnitPlan() {
                         {current.area}
                       </p>
                     </div>
-
                   </div>
                 </div>
 
-                {/* Card 02 */}
-
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F5C542] hover:shadow-xl">
                   <div className="flex items-start gap-4">
-
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F5C542]/10 text-[#C89A2B]">
-                      <span className="text-sm font-black">
-                        02
-                      </span>
+                      <span className="text-sm font-black">02</span>
                     </div>
 
                     <div>
@@ -406,19 +333,13 @@ export default function UnitPlan() {
                         cách tổ chức các không gian chức năng.
                       </p>
                     </div>
-
                   </div>
                 </div>
 
-                {/* Card 03 */}
-
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F5C542] hover:shadow-xl">
                   <div className="flex items-start gap-4">
-
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F5C542]/10 text-[#C89A2B]">
-                      <span className="text-sm font-black">
-                        03
-                      </span>
+                      <span className="text-sm font-black">03</span>
                     </div>
 
                     <div>
@@ -431,15 +352,12 @@ export default function UnitPlan() {
                         và xem mặt bằng rõ hơn.
                       </p>
                     </div>
-
                   </div>
                 </div>
 
               </div>
 
-              {/* =================================================
-                  CTA
-              ================================================= */}
+              {/* CTA */}
 
               <div className="mt-10 flex flex-wrap gap-4">
 
@@ -465,13 +383,10 @@ export default function UnitPlan() {
                 </button>
 
               </div>
-
             </div>
           </div>
 
-          {/* =================================================
-              BOTTOM NOTE
-          ================================================= */}
+          {/* Note */}
 
           <div
             className="mt-16 rounded-3xl border border-yellow-200 bg-yellow-50/70 p-6 text-center"
@@ -491,19 +406,13 @@ export default function UnitPlan() {
         </div>
       </section>
 
-      {/* =========================================================
-          LIGHTBOX
-      ========================================================= */}
+      {/* Lightbox */}
 
       {open && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 backdrop-blur-xl sm:p-6"
           onClick={() => setOpen(false)}
         >
-
-          {/* =====================================================
-              CLOSE
-          ===================================================== */}
 
           <button
             type="button"
@@ -513,10 +422,6 @@ export default function UnitPlan() {
           >
             <X size={28} />
           </button>
-
-          {/* =====================================================
-              PREVIOUS
-          ===================================================== */}
 
           <button
             type="button"
@@ -530,10 +435,6 @@ export default function UnitPlan() {
             <ChevronLeft size={30} />
           </button>
 
-          {/* =====================================================
-              NEXT
-          ===================================================== */}
-
           <button
             type="button"
             onClick={(event) => {
@@ -545,10 +446,6 @@ export default function UnitPlan() {
           >
             <ChevronRight size={30} />
           </button>
-
-          {/* =====================================================
-              IMAGE
-          ===================================================== */}
 
           <div
             className="relative flex h-[78vh] w-[88vw] max-w-7xl items-center justify-center"
@@ -564,12 +461,7 @@ export default function UnitPlan() {
             />
           </div>
 
-          {/* =====================================================
-              TOP INFO
-          ===================================================== */}
-
           <div className="absolute left-1/2 top-5 -translate-x-1/2 text-center sm:top-7">
-
             <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-yellow-300 sm:text-xs">
               {current.category}
             </p>
@@ -581,22 +473,13 @@ export default function UnitPlan() {
             <p className="mt-1 text-sm font-semibold text-white/70">
               Diện tích tham khảo: {current.area}
             </p>
-
           </div>
-
-          {/* =====================================================
-              COUNTER
-          ===================================================== */}
 
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-5 py-2 text-xs font-medium tracking-[0.3em] text-white backdrop-blur-xl sm:bottom-7 sm:text-sm">
             {String(active + 1).padStart(2, "0")}
             {" / "}
             {String(unitPlans.length).padStart(2, "0")}
           </div>
-
-          {/* =====================================================
-              THUMBNAILS
-          ===================================================== */}
 
           <div
             className="absolute bottom-16 left-1/2 flex max-w-[90vw] -translate-x-1/2 gap-2 overflow-x-auto rounded-full bg-white/10 px-3 py-2 backdrop-blur-xl sm:bottom-20 sm:gap-3 sm:px-4 sm:py-3"

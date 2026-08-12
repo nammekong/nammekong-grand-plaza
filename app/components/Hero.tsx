@@ -2,9 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight, ArrowDown, Play } from "lucide-react";
 
 export default function Hero() {
+  /* =========================================================
+     SCROLL TO VIDEO
+  ========================================================= */
+
+  const handleVideoClick = () => {
+    const videoSection = document.getElementById("video");
+
+    if (!videoSection) {
+      console.warn("Không tìm thấy section #video");
+      return;
+    }
+
+    videoSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section
       id="home"
@@ -58,7 +76,7 @@ export default function Hero() {
           ================================================= */}
 
           <span className="inline-flex max-w-full rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-yellow-300 backdrop-blur-xl sm:px-5 sm:text-xs sm:tracking-[0.28em]">
-            Premium Mixed-use Development
+            Dòng chảy hội tụ
           </span>
 
           {/* =================================================
@@ -76,14 +94,12 @@ export default function Hero() {
           </h1>
 
           {/* =================================================
-              DESCRIPTION
+              POSITIONING
           ================================================= */}
 
           <p className="mt-5 max-w-xl text-[14px] leading-6 text-slate-300 sm:mt-7 sm:text-base sm:leading-7 lg:text-[17px] lg:leading-8">
-            Biểu tượng thương mại, văn phòng và căn hộ cao cấp
-            ngay trung tâm Thành phố mới Bình Dương.
-            Kiến tạo chuẩn sống hiện đại với hệ tiện ích đồng bộ,
-            không gian sang trọng và giá trị bền vững.
+            Nơi hội tụ những dòng chảy giá trị của một đô thị đang chuyển mình:
+            năng lượng, hạ tầng, dưỡng lành và thặng dư.
           </p>
 
           {/* =================================================
@@ -95,6 +111,10 @@ export default function Hero() {
             data-aos="fade-up"
             data-aos-delay="300"
           >
+            {/* =================================================
+                CONTACT BUTTON
+            ================================================= */}
+
             <Link
               href="#contact"
               className="inline-flex min-h-[50px] items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 px-6 py-3 text-sm font-bold text-slate-900 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-yellow-400/30 sm:px-8 sm:py-4 sm:text-base"
@@ -102,22 +122,32 @@ export default function Hero() {
               Nhận thông tin dự án
             </Link>
 
-            <Link
-              href="#about"
-              className="group inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-slate-900 sm:px-8 sm:py-4 sm:text-base"
+            {/* =================================================
+                VIDEO BUTTON
+            ================================================= */}
+
+            <button
+              type="button"
+              onClick={handleVideoClick}
+              className="group inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-slate-900 active:scale-[0.98] sm:px-8 sm:py-4 sm:text-base"
             >
-              Khám phá dự án
+              <Play
+                size={16}
+                fill="currentColor"
+                className="transition-transform duration-300 group-hover:scale-110"
+              />
+
+              <span>Xem video dự án</span>
 
               <ArrowRight
                 size={18}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </Link>
+            </button>
           </div>
 
           {/* =================================================
               MOBILE BUILDING
-              Chỉ hiện mobile / tablet
           ================================================= */}
 
           <div
@@ -150,11 +180,11 @@ export default function Hero() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl sm:rounded-3xl sm:p-5">
               <h3 className="text-xl font-black text-yellow-400 sm:text-3xl">
-                50+
+                4
               </h3>
 
               <p className="mt-1 text-[10px] leading-4 text-slate-300 sm:mt-2 sm:text-sm sm:leading-6">
-                Tiện ích được giới thiệu
+                Dòng chảy giá trị
               </p>
             </div>
 
@@ -162,11 +192,11 @@ export default function Hero() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl sm:rounded-3xl sm:p-5">
               <h3 className="text-xl font-black text-yellow-400 sm:text-3xl">
-                5★
+                TOD
               </h3>
 
               <p className="mt-1 text-[10px] leading-4 text-slate-300 sm:mt-2 sm:text-sm sm:leading-6">
-                Chuẩn sống hiện đại
+                Định hướng kết nối
               </p>
             </div>
 
@@ -174,19 +204,18 @@ export default function Hero() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl sm:rounded-3xl sm:p-5">
               <h3 className="text-xl font-black text-yellow-400 sm:text-3xl">
-                TOD
+                15'
               </h3>
 
               <p className="mt-1 text-[10px] leading-4 text-slate-300 sm:mt-2 sm:text-sm sm:leading-6">
-                Vị trí tâm điểm TOD
+                Tầm nhìn cộng đồng
               </p>
             </div>
           </div>
         </div>
 
         {/* ===================================================
-            RIGHT VISUAL
-            DESKTOP
+            RIGHT VISUAL - DESKTOP
         =================================================== */}
 
         <div
@@ -242,15 +271,15 @@ export default function Hero() {
             className="absolute bottom-12 right-0 rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl xl:bottom-16 xl:p-6"
           >
             <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-yellow-300 xl:text-xs xl:tracking-[0.35em]">
-              DEVELOPMENT
+              CONCEPT
             </span>
 
             <h4 className="mt-2 text-xl font-bold text-white xl:mt-3 xl:text-2xl">
-              Mixed-use
+              Dòng chảy hội tụ
             </h4>
 
             <p className="mt-1 text-sm text-slate-300 xl:mt-2">
-              Thương mại • Văn phòng • Căn hộ
+              Năng lượng • Hạ tầng • Dưỡng lành • Thặng dư
             </p>
           </div>
         </div>
@@ -258,7 +287,6 @@ export default function Hero() {
 
       {/* =====================================================
           SCROLL INDICATOR
-          Chỉ hiện desktop
       ===================================================== */}
 
       <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 lg:block">

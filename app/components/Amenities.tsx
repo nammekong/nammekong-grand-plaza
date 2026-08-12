@@ -4,114 +4,112 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  Building2,
-  Trees,
-  Waves,
-  Eye,
   Baby,
-  Coffee,
-  Sparkles,
   BriefcaseBusiness,
+  Coffee,
+  Eye,
   Footprints,
-  Users,
   HeartPulse,
   Hotel,
+  Sparkles,
+  Trees,
+  Waves,
 } from "lucide-react";
 
 const amenities = [
   {
     title: "Sky BBQ Garden",
-    subtitle: "Rooftop Lifestyle",
+    subtitle: "ROOFTOP LIFESTYLE",
     description:
-      "Không gian BBQ trên cao được giới thiệu như một điểm sinh hoạt và thư giãn ngoài trời.",
+      "Không gian trên cao dành cho những hoạt động thư giãn, gặp gỡ và trải nghiệm ngoài trời.",
     image: "/images/amenity-1.jpg",
     icon: Coffee,
   },
   {
     title: "Zen Garden",
-    subtitle: "Relax & Nature",
+    subtitle: "GREEN RETREAT",
     description:
-      "Không gian cảnh quan xanh mang đến cảm giác thư giãn và gần gũi với thiên nhiên.",
+      "Không gian xanh và vườn dạo bộ tạo nên những khoảng lặng để thư giãn trong nhịp sống đô thị.",
     image: "/images/amenity-2.jpg",
     icon: Trees,
   },
   {
     title: "Tropical Garden",
-    subtitle: "Green Landscape",
+    subtitle: "LANDSCAPE",
     description:
-      "Không gian cây xanh và cảnh quan nhiệt đới tạo nên trải nghiệm dạo bộ và thư giãn.",
+      "Cảnh quan cây xanh mang đến thêm những không gian kết nối với thiên nhiên trong tổng thể dự án.",
     image: "/images/amenity-3.jpg",
     icon: Trees,
   },
   {
     title: "Sky Observatory",
-    subtitle: "Panoramic View",
+    subtitle: "PANORAMIC VIEW",
     description:
-      "Không gian trên cao được giới thiệu với góc nhìn rộng và trải nghiệm ngắm cảnh.",
+      "Không gian trên cao mở ra góc nhìn rộng, góp phần tạo nên trải nghiệm khác biệt cho cư dân.",
     image: "/images/amenity-4.jpg",
     icon: Eye,
   },
   {
     title: "Kids Outdoor Playground",
-    subtitle: "Family Space",
+    subtitle: "FAMILY SPACE",
     description:
-      "Không gian vui chơi ngoài trời dành cho trẻ em và các hoạt động gia đình.",
+      "Không gian vui chơi ngoài trời dành cho trẻ em, hướng đến những hoạt động gia đình.",
     image: "/images/amenity-5.jpg",
     icon: Baby,
   },
   {
     title: "Resort Swimming Pool",
-    subtitle: "Resort Experience",
+    subtitle: "WELLNESS",
     description:
-      "Không gian hồ bơi được thiết kế theo hướng thư giãn và trải nghiệm nghỉ dưỡng.",
+      "Không gian hồ bơi phục vụ nhu cầu thư giãn và tái tạo năng lượng sau những giờ làm việc.",
     image: "/images/amenity-6.jpg",
     icon: Waves,
   },
   {
     title: "Rooftop Lounge",
-    subtitle: "Luxury Lifestyle",
+    subtitle: "LIFESTYLE",
     description:
-      "Không gian lounge trên cao dành cho thư giãn, gặp gỡ và tận hưởng không gian.",
+      "Không gian thư giãn trên cao dành cho gặp gỡ, trò chuyện và tận hưởng những khoảng thời gian riêng.",
     image: "/images/amenity-7.jpg",
     icon: Sparkles,
   },
   {
     title: "Co-working Space",
-    subtitle: "Modern Workspace",
+    subtitle: "SMART WORKSPACE",
     description:
-      "Không gian làm việc được giới thiệu theo định hướng hiện đại và linh hoạt.",
+      "Thư viện kết hợp Co-working Space được giới thiệu với diện tích gần 600 m², phục vụ nhu cầu học tập và làm việc linh hoạt.",
     image: "/images/amenity-8.jpg",
     icon: BriefcaseBusiness,
   },
   {
     title: "Sky Garden Walk",
-    subtitle: "Outdoor Experience",
+    subtitle: "OUTDOOR EXPERIENCE",
     description:
-      "Không gian dạo bộ kết hợp cảnh quan xanh, tạo thêm trải nghiệm ngoài trời.",
+      "Không gian dạo bộ kết hợp cảnh quan xanh, tạo thêm những trải nghiệm thư giãn ngoài trời.",
     image: "/images/amenity-9.jpg",
     icon: Footprints,
   },
   {
     title: "Kids Club",
-    subtitle: "Creative Space",
+    subtitle: "FAMILY LIFESTYLE",
     description:
-      "Không gian dành cho trẻ em với định hướng vui chơi, sinh hoạt và khám phá.",
+      "Không gian dành cho trẻ em và gia đình, hướng đến vui chơi, kết nối và sinh hoạt cộng đồng.",
     image: "/images/amenity-10.jpg",
     icon: Baby,
   },
   {
-    title: "Onsen & Spa",
-    subtitle: "Wellness",
+    title: "Onsen & Wellness",
+    subtitle: "BODY & MIND",
     description:
-      "Không gian chăm sóc sức khỏe và thư giãn được giới thiệu trong hệ thống tiện ích.",
+      "Nhóm tiện ích chăm sóc sức khỏe và thư giãn được định hướng để hỗ trợ quá trình phục hồi năng lượng mỗi ngày.",
     image: "/images/amenity-11.jpg",
     icon: HeartPulse,
   },
   {
     title: "Grand Lobby",
-    subtitle: "Luxury Arrival",
+    subtitle: "ARRIVAL EXPERIENCE",
     description:
-      "Không gian sảnh đón được giới thiệu với phong cách sang trọng và hiện đại.",
+      "Không gian đón tiếp tạo nên điểm chạm đầu tiên trong trải nghiệm của cư dân và khách đến dự án.",
     image: "/images/amenity-12.jpg",
     icon: Hotel,
   },
@@ -136,7 +134,6 @@ export default function Amenities() {
       ===================================================== */}
 
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-
         {/* ===================================================
             HEADER
         =================================================== */}
@@ -149,7 +146,7 @@ export default function Amenities() {
             LIFESTYLE AMENITIES
           </span>
 
-          <h2 className="mt-6 font-[var(--font-jakarta)] text-4xl font-extrabold leading-[1.12] tracking-[-0.03em] text-[#0F172A] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-4xl font-extrabold leading-[1.12] tracking-[-0.03em] text-[#0F172A] sm:text-5xl lg:text-6xl">
             Hệ tiện ích
             <br />
             <span className="text-[#C89A2B]">
@@ -159,8 +156,9 @@ export default function Amenities() {
 
           <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
             Khám phá hệ thống không gian tiện ích được giới thiệu tại
-            Nam Mekong Grand Plaza, từ cảnh quan, thư giãn, vui chơi
-            đến những không gian phục vụ phong cách sống hiện đại.
+            Nam Mekong Grand Plaza, từ cảnh quan, thư giãn, chăm sóc
+            sức khỏe, vui chơi gia đình đến những không gian học tập
+            và làm việc linh hoạt.
           </p>
         </div>
 
@@ -175,11 +173,10 @@ export default function Amenities() {
         </div>
 
         {/* ===================================================
-            GRID
+            AMENITIES GRID
         =================================================== */}
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3">
-
           {amenities.map((item, index) => {
             const Icon = item.icon;
 
@@ -188,15 +185,13 @@ export default function Amenities() {
                 key={item.title}
                 data-aos="fade-up"
                 data-aos-delay={Math.min(index * 60, 480)}
-                className="group overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.07)] transition-all duration-500 hover:-translate-y-2 hover:border-[#F5C542]/40 hover:shadow-[0_30px_80px_rgba(15,23,42,0.16)]"
+                className="group overflow-hidden rounded-[30px] border border-slate-200/80 bg-white shadow-[0_18px_55px_rgba(15,23,42,0.07)] transition-all duration-500 hover:-translate-y-2 hover:border-[#F5C542]/50 hover:shadow-[0_30px_80px_rgba(15,23,42,0.16)]"
               >
-
                 {/* =================================================
                     IMAGE
                 ================================================= */}
 
                 <div className="relative h-[340px] overflow-hidden sm:h-[370px]">
-
                   <Image
                     src={item.image}
                     alt={`${item.title} - Nam Mekong Grand Plaza`}
@@ -207,47 +202,41 @@ export default function Amenities() {
 
                   {/* DARK GRADIENT */}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06101F] via-[#06101F]/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#06101F] via-[#06101F]/30 to-transparent" />
 
-                  {/* TOP LIGHT GRADIENT */}
+                  {/* TOP GRADIENT */}
 
-                  <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/20 to-transparent" />
+                  <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/25 to-transparent" />
 
-                  {/* =================================================
-                      NUMBER
-                  ================================================= */}
+                  {/* NUMBER */}
 
                   <div className="absolute left-6 top-5 sm:left-7 sm:top-6">
-                    <span className="font-[var(--font-jakarta)] text-5xl font-extrabold leading-none tracking-[-0.05em] text-white/20">
+                    <span className="text-5xl font-extrabold leading-none tracking-[-0.05em] text-white/20">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  {/* =================================================
-                      ICON
-                  ================================================= */}
+                  {/* ICON */}
 
                   <div className="absolute right-6 top-5 sm:right-7 sm:top-6">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/25 bg-white/10 text-yellow-300 shadow-lg backdrop-blur-md transition-all duration-300 group-hover:border-[#F5C542] group-hover:bg-[#F5C542] group-hover:text-[#0F172A]">
-                      <Icon size={22} strokeWidth={2} />
+                      <Icon
+                        size={22}
+                        strokeWidth={2}
+                      />
                     </div>
                   </div>
 
-                  {/* =================================================
-                      IMAGE CONTENT
-                  ================================================= */}
+                  {/* IMAGE CONTENT */}
 
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-
                     <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-yellow-300 sm:text-xs">
                       {item.subtitle}
                     </p>
 
-                    <h3 className="mt-3 font-[var(--font-jakarta)] text-2xl font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[28px]">
+                    <h3 className="mt-3 text-2xl font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[28px]">
                       {item.title}
                     </h3>
-
-                    {/* HOVER INDICATOR */}
 
                     <div className="mt-5 flex items-center gap-2 opacity-70 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
                       <span className="h-px w-8 bg-yellow-300" />
@@ -256,7 +245,6 @@ export default function Amenities() {
                         Explore
                       </span>
                     </div>
-
                   </div>
                 </div>
 
@@ -265,13 +253,11 @@ export default function Amenities() {
                 ================================================= */}
 
                 <div className="p-6 sm:p-7">
-
-                  <p className="min-h-[72px] text-sm leading-7 text-slate-600 sm:text-[15px]">
+                  <p className="min-h-[84px] text-sm leading-7 text-slate-600 sm:text-[15px]">
                     {item.description}
                   </p>
 
                   <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
-
                     <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C89A2B]">
                       Nam Mekong
                     </span>
@@ -282,18 +268,15 @@ export default function Amenities() {
                         className="transition-transform duration-300 group-hover:translate-x-1"
                       />
                     </div>
-
                   </div>
-
                 </div>
               </article>
             );
           })}
-
         </div>
 
         {/* ===================================================
-            BOTTOM HIGHLIGHT
+            WELLNESS HIGHLIGHT
         =================================================== */}
 
         <div
@@ -301,49 +284,86 @@ export default function Amenities() {
           data-aos="fade-up"
         >
           <div className="relative px-7 py-10 sm:px-10 sm:py-12 lg:px-14">
-
-            {/* Background glow */}
-
             <div className="pointer-events-none absolute right-[-100px] top-[-150px] h-[350px] w-[350px] rounded-full bg-yellow-400/10 blur-[100px]" />
 
-            <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              {/* LEFT */}
 
-              <div className="max-w-3xl">
-
+              <div>
                 <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-300">
-                  LIFESTYLE EXPERIENCE
+                  BODY • MIND • INTELLIGENCE
                 </p>
 
-                <h3 className="mt-4 font-[var(--font-jakarta)] text-3xl font-extrabold leading-tight tracking-[-0.025em] text-white sm:text-4xl">
-                  Một hệ sinh thái tiện ích
+                <h3 className="mt-4 text-3xl font-extrabold leading-tight tracking-[-0.025em] text-white sm:text-4xl">
+                  Hệ tiện ích
                   <br className="hidden sm:block" />
-                  cho nhiều nhu cầu trải nghiệm
+                  hướng đến trải nghiệm toàn diện
                 </h3>
 
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                  Từ những không gian xanh, vui chơi, thư giãn đến các
-                  khu vực sinh hoạt và làm việc, hệ tiện ích được giới
-                  thiệu theo hướng đa dạng và hiện đại.
+                  Tài liệu dự án giới thiệu hệ tiện ích theo ba nhóm
+                  trải nghiệm: chăm sóc thể chất, thư giãn tinh thần và
+                  hỗ trợ học tập, làm việc linh hoạt.
                 </p>
-
               </div>
 
-              <Link
-                href="#gallery"
-                className="group inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#F5C542] px-7 py-4 font-bold text-[#0F172A] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:shadow-xl sm:px-8"
-              >
-                Khám phá thư viện
+              {/* RIGHT */}
 
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
+              <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-300">
+                    THÂN
+                  </p>
 
+                  <p className="mt-2 text-sm leading-6 text-white/80">
+                    Hồ bơi khoáng nóng, gym, xông hơi và yoga.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-300">
+                    TÂM
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-white/80">
+                    Vườn dạo bộ, không gian gặp gỡ và thư giãn.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-300">
+                    TRÍ
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-white/80">
+                    Thư viện kết hợp Co-working Space gần 600 m².
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* ===================================================
+            CTA
+        =================================================== */}
+
+        <div
+          className="mt-12 flex justify-center"
+          data-aos="fade-up"
+        >
+          <Link
+            href="#gallery"
+            className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#F5C542] px-8 py-4 font-bold text-[#0F172A] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:shadow-xl"
+          >
+            Khám phá thư viện
+
+            <ArrowRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );

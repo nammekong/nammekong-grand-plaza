@@ -1,21 +1,64 @@
 "use client";
 
 import Image from "next/image";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
+/* =========================================================
+   MENU
+========================================================= */
+
 const menu = [
-  { name: "Trang chủ", link: "#home" },
-  { name: "Giới thiệu", link: "#about" },
-  { name: "Vị trí", link: "#location" },
-  { name: "Tiện ích", link: "#amenities" },
-  { name: "Thư viện", link: "#gallery" },
-  { name: "Master Plan", link: "#masterplan" },
-  { name: "Căn hộ", link: "#unitplan" },
-  { name: "Liên hệ", link: "#contact" },
+  {
+    name: "Trang chủ",
+    link: "#home",
+  },
+  {
+    name: "Giới thiệu",
+    link: "#about",
+  },
+  {
+    name: "Vị trí",
+    link: "#location",
+  },
+  {
+    name: "Tiện ích",
+    link: "#amenities",
+  },
+  {
+    name: "Thư viện",
+    link: "#gallery",
+  },
+  {
+    name: "Video",
+    link: "#video",
+  },
+  {
+    name: "Master Plan",
+    link: "#masterplan",
+  },
+  {
+    name: "Căn hộ",
+    link: "#unitplan",
+  },
+  {
+    name: "Liên hệ",
+    link: "#contact",
+  },
 ];
 
+/* =========================================================
+   HEADER OFFSET
+
+   Header cố định phía trên.
+   Khi click menu, nội dung sẽ không bị header che.
+========================================================= */
+
 const HEADER_OFFSET = 80;
+
+/* =========================================================
+   COMPONENT
+========================================================= */
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +73,15 @@ export default function Header() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
+      /* -----------------------------------------------
+         HEADER BACKGROUND
+      ------------------------------------------------ */
+
       setScrolled(scrollY > 30);
+
+      /* -----------------------------------------------
+         TÌM SECTION ĐANG HIỂN THỊ
+      ------------------------------------------------ */
 
       const sections = Array.from(
         document.querySelectorAll<HTMLElement>("section[id]")
@@ -50,7 +101,10 @@ export default function Header() {
         }
       }
 
-      // Khi gần cuối trang
+      /* -----------------------------------------------
+         KHI GẦN CUỐI TRANG
+      ------------------------------------------------ */
+
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 100
@@ -65,11 +119,17 @@ export default function Header() {
       setActiveSection(currentSection);
     };
 
+    /* Chạy lần đầu */
+
     handleScroll();
+
+    /* Theo dõi scroll */
 
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
+
+    /* Theo dõi resize */
 
     window.addEventListener("resize", handleScroll);
 
@@ -100,10 +160,16 @@ export default function Header() {
   ========================================================= */
 
   const handleMenuClick = (link: string) => {
-    // Đóng menu trước
+    /* -----------------------------------------------
+       Đóng menu mobile
+    ------------------------------------------------ */
+
     setOpen(false);
 
-    // Chờ menu đóng rồi mới scroll
+    /* -----------------------------------------------
+       Chờ menu đóng rồi mới scroll
+    ------------------------------------------------ */
+
     window.setTimeout(() => {
       const target = document.querySelector<HTMLElement>(link);
 
@@ -129,6 +195,10 @@ export default function Header() {
 
   return (
     <>
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+
       <header
         className={`fixed left-0 top-0 z-[9999] w-full transition-all duration-300 ${
           scrolled || open
@@ -178,7 +248,7 @@ export default function Header() {
 
           <nav
             aria-label="Điều hướng chính"
-            className="hidden items-center gap-4 lg:flex xl:gap-6"
+            className="hidden items-center gap-3 lg:flex xl:gap-5"
           >
             {menu.map((item) => {
               const isActive = activeSection === item.link;
@@ -209,23 +279,52 @@ export default function Header() {
           </nav>
 
           {/* =================================================
-              DESKTOP HOTLINE
+              DESKTOP ACTIONS
           ================================================= */}
 
-          <a
-            href="tel:0767615368"
-            aria-label="Gọi hotline 07676 15 368"
-            className="hidden h-11 items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 px-5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-yellow-400/30 lg:flex xl:h-12 xl:px-6"
-          >
-            <Phone
-              size={17}
-              strokeWidth={2.5}
-            />
+          <div className="hidden items-center gap-3 lg:flex">
+            {/* =================================================
+                VIDEO BUTTON
+            ================================================= */}
 
-            <span className="whitespace-nowrap text-sm xl:text-[15px]">
-              07676 15 368
-            </span>
-          </a>
+            <button
+              type="button"
+              onClick={() => handleMenuClick("#video")}
+              aria-label="Xem video dự án"
+              className="group inline-flex h-11 items-center gap-2 rounded-full border border-yellow-400/40 bg-white/10 px-4 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-400 hover:text-[#0F172A] xl:h-12 xl:px-5"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white transition group-hover:bg-[#0F172A]">
+                <Play
+                  size={13}
+                  fill="currentColor"
+                  className="ml-[1px]"
+                />
+              </span>
+
+              <span className="whitespace-nowrap text-sm xl:text-[15px]">
+                Xem video
+              </span>
+            </button>
+
+            {/* =================================================
+                HOTLINE
+            ================================================= */}
+
+            <a
+              href="tel:0767615368"
+              aria-label="Gọi hotline 07676 15 368"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 px-5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-yellow-400/30 xl:h-12 xl:px-6"
+            >
+              <Phone
+                size={17}
+                strokeWidth={2.5}
+              />
+
+              <span className="whitespace-nowrap text-sm xl:text-[15px]">
+                07676 15 368
+              </span>
+            </a>
+          </div>
 
           {/* =================================================
               MOBILE HAMBURGER
@@ -252,9 +351,9 @@ export default function Header() {
           </button>
         </div>
 
-        {/* ===================================================
+        {/* =====================================================
             MOBILE MENU
-        =================================================== */}
+        ===================================================== */}
 
         <div
           className={`absolute left-0 top-full w-full border-t border-white/10 bg-[#0B1023]/98 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
@@ -267,6 +366,10 @@ export default function Header() {
             aria-label="Điều hướng mobile"
             className="mx-auto max-h-[calc(100vh-80px)] w-full max-w-xl overflow-y-auto px-4 py-4 sm:px-6"
           >
+            {/* =================================================
+                MOBILE MENU ITEMS
+            ================================================= */}
+
             {menu.map((item) => {
               const isActive = activeSection === item.link;
 
@@ -281,7 +384,16 @@ export default function Header() {
                       : "text-white hover:bg-white/5 hover:text-yellow-400"
                   }`}
                 >
-                  <span className="text-[15px] font-medium">
+                  <span className="flex items-center gap-3 text-[15px] font-medium">
+                    {item.link === "#video" && (
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white">
+                        <Play
+                          size={12}
+                          fill="currentColor"
+                        />
+                      </span>
+                    )}
+
                     {item.name}
                   </span>
 
@@ -313,7 +425,8 @@ export default function Header() {
 
       {/* =====================================================
           MOBILE BACKDROP
-          Bấm ra ngoài để đóng menu
+
+          Bấm ra ngoài để đóng menu.
       ===================================================== */}
 
       {open && (
